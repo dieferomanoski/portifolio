@@ -1,4 +1,4 @@
-# portifolio
+# Portifolio
 Fullstack application with ReactJS and Sanity to show all my portifolio projects.
 
 ![image](https://user-images.githubusercontent.com/39654508/202946999-fce44f6f-2c8b-4163-a3ca-84c3e7d8fd02.png)
