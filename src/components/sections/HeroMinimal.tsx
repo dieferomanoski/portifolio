@@ -37,7 +37,7 @@ export default function HeroMinimal() {
                   />
                 </div>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 my-8">
                   <FadeInText
                     text="🌍 Worldwide"
                     delay={600}
@@ -91,7 +91,11 @@ export default function HeroMinimal() {
                   className="inline-flex items-center gap-1.5 rounded-full border border-slate-800/80 bg-slate-950/60 px-3 py-1.5 font-medium text-slate-100/90 backdrop-blur-md transition hover:border-slate-700/80 hover:bg-slate-900/60"
                 >
                   <span className="inline-flex h-4 w-4 items-center justify-center rounded-full border border-slate-600/80 bg-slate-900">
-                    <svg viewBox="0 0 16 16" aria-hidden="true" className="h-3 w-3 fill-current">
+                    <svg
+                      viewBox="0 0 16 16"
+                      aria-hidden="true"
+                      className="h-3 w-3 fill-current"
+                    >
                       <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.08.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
                     </svg>
                   </span>
@@ -104,7 +108,11 @@ export default function HeroMinimal() {
                   className="inline-flex items-center gap-1.5 rounded-full border border-slate-800/80 bg-slate-950/60 px-3 py-1.5 font-medium text-slate-100/90 backdrop-blur-md transition hover:border-slate-700/80 hover:bg-slate-900/60"
                 >
                   <span className="inline-flex h-4 w-4 items-center justify-center rounded-sm border border-slate-600/80 bg-slate-900">
-                    <svg viewBox="0 0 16 16" aria-hidden="true" className="h-3 w-3 fill-current">
+                    <svg
+                      viewBox="0 0 16 16"
+                      aria-hidden="true"
+                      className="h-3 w-3 fill-current"
+                    >
                       <path d="M3.22 2A1.22 1.22 0 1 1 2 3.22 1.22 1.22 0 0 1 3.22 2ZM2.16 5h2.12v8H2.16Zm4.07 0h2.03v1.09h.03C8.71 5.6 9.6 4.9 10.9 4.9c2.22 0 2.63 1.46 2.63 3.36V13h-2.12V8.82c0-1-.02-2.28-1.39-2.28-1.4 0-1.62 1.09-1.62 2.2V13H6.23Z" />
                     </svg>
                   </span>
@@ -121,16 +129,25 @@ export default function HeroMinimal() {
                   <HypnoticOrb />
                 </div>
               </div>
-              
+
               {/* Expanding rings on hover */}
               <div className="absolute inset-0 rounded-full border-2 border-cyan-500/0 group-hover/orb:border-cyan-500/30 transition-all duration-700 group-hover/orb:scale-110" />
               <div className="absolute inset-0 rounded-full border-2 border-cyan-500/0 group-hover/orb:border-cyan-500/20 transition-all duration-1000 group-hover/orb:scale-125" />
               <div className="absolute inset-0 rounded-full border border-cyan-500/0 group-hover/orb:border-cyan-500/10 transition-all duration-1200 group-hover/orb:scale-140" />
-              
+
               {/* Floating particles around orb */}
-              <div className="absolute top-10 right-10 w-2 h-2 rounded-full bg-cyan-400 animate-ping group-hover/orb:bg-cyan-300 group-hover/orb:scale-150 transition-all" style={{ animationDuration: "3s" }} />
-              <div className="absolute bottom-20 left-10 w-2 h-2 rounded-full bg-cyan-400 animate-ping group-hover/orb:bg-cyan-300 group-hover/orb:scale-150 transition-all" style={{ animationDuration: "4s", animationDelay: "1s" }} />
-              <div className="absolute top-1/2 right-0 w-2 h-2 rounded-full bg-blue-400 animate-ping group-hover/orb:bg-cyan-300 group-hover/orb:scale-150 transition-all" style={{ animationDuration: "5s", animationDelay: "2s" }} />
+              <div
+                className="absolute top-10 right-10 w-2 h-2 rounded-full bg-cyan-400 animate-ping group-hover/orb:bg-cyan-300 group-hover/orb:scale-150 transition-all"
+                style={{ animationDuration: "3s" }}
+              />
+              <div
+                className="absolute bottom-20 left-10 w-2 h-2 rounded-full bg-cyan-400 animate-ping group-hover/orb:bg-cyan-300 group-hover/orb:scale-150 transition-all"
+                style={{ animationDuration: "4s", animationDelay: "1s" }}
+              />
+              <div
+                className="absolute top-1/2 right-0 w-2 h-2 rounded-full bg-blue-400 animate-ping group-hover/orb:bg-cyan-300 group-hover/orb:scale-150 transition-all"
+                style={{ animationDuration: "5s", animationDelay: "2s" }}
+              />
             </div>
           </div>
         </div>
