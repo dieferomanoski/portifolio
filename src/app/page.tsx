@@ -1,26 +1,26 @@
-import ContactSection from "@/components/sections/ContactSection";
-import Hero from "@/components/sections/Hero";
-import ProjectsSection from "@/components/sections/ProjectsSection";
-import SkillsSection from "@/components/sections/SkillsSection";
+import HeroMinimal from "@/components/sections/HeroMinimal";
+import ProjectsCollapsible from "@/components/sections/ProjectsCollapsible";
+import SkillsCollapsible from "@/components/sections/SkillsCollapsible";
+import ContactSectionMinimal from "@/components/sections/ContactSectionMinimal";
 
 export default function Home() {
   return (
-    <div className="space-y-24 md:space-y-32">
-      <section id="hero" className="section-padding">
-        <Hero />
+    <>
+      <section id="hero">
+        <HeroMinimal />
       </section>
 
-      <section id="projects" className="section-padding">
-        <ProjectsSection />
+      <section id="projects">
+        <ProjectsCollapsible />
       </section>
 
-      <section id="skills" className="section-padding">
-        <SkillsSection />
+      <section id="skills">
+        <SkillsCollapsible />
       </section>
 
-      <section id="contact" className="section-padding pb-24 md:pb-32">
-        <ContactSection />
+      <section id="contact">
+        <ContactSectionMinimal />
       </section>
-    </div>
+    </>
   );
 }

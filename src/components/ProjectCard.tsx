@@ -1,8 +1,11 @@
+"use client";
+
 import type { Project } from "@/data/projects";
+import GlowCard from "@/components/ui/GlowCard";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="glass-card group flex flex-col justify-between rounded-2xl p-5 shadow-lg shadow-slate-950/70 transition hover:-translate-y-1 hover:shadow-neon-cyan">
+    <GlowCard className="group flex flex-col justify-between p-5 shadow-lg shadow-slate-950/70 transition hover:-translate-y-1">
       <div>
         <h3 className="text-base font-semibold text-slate-100">
           {project.title}
@@ -39,7 +42,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           </a>
         )}
       </div>
-    </article>
+    </GlowCard>
   );
 }
 

@@ -1,3 +1,7 @@
+"use client";
+
+import GlowCard from "@/components/ui/GlowCard";
+
 const skills = {
   Frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
   Backend: ["Node.js", "Express", "REST APIs"],
@@ -16,7 +20,7 @@ export default function SkillsSection() {
 
       <div className="mt-6 grid gap-6 md:grid-cols-3">
         {Object.entries(skills).map(([group, items]) => (
-          <div key={group} className="glass-card rounded-2xl p-5">
+          <GlowCard key={group} className="p-5">
             <h3 className="text-sm font-semibold text-slate-100">{group}</h3>
             <div className="mt-3 flex flex-wrap gap-2">
               {items.map((item) => (
@@ -28,7 +32,7 @@ export default function SkillsSection() {
                 </span>
               ))}
             </div>
-          </div>
+          </GlowCard>
         ))}
       </div>
     </div>

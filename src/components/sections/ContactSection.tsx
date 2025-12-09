@@ -1,5 +1,9 @@
 "use client";
 
+import { siteConfig } from "@/config/site";
+import AnimatedBorderCard from "@/components/effects/AnimatedBorderCard";
+import ShimmerButton from "@/components/effects/ShimmerButton";
+
 export default function ContactSection() {
   return (
     <div className="max-w-xl">
@@ -14,19 +18,25 @@ export default function ContactSection() {
         projects, collaborations, or just saying hi.
       </p>
 
-      <div className="glass-card mt-6 rounded-2xl p-5">
-        <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-400">
-          Email
-        </p>
-        <a
-          href="mailto:your-email@example.com"
-          className="mt-2 inline-flex items-center text-sm font-semibold text-neon-cyan transition hover:text-neon-magenta"
-        >
-          your-email@example.com
-        </a>
+      <AnimatedBorderCard className="mt-6">
+        <div className="p-5">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-400">
+            Email
+          </p>
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="mt-2 inline-flex items-center text-sm font-semibold text-neon-cyan transition hover:text-neon-magenta"
+          >
+            {siteConfig.email}
+          </a>
+        </div>
+      </AnimatedBorderCard>
+
+      <div className="mt-6">
+        <ShimmerButton href={`mailto:${siteConfig.email}`}>
+          Send me an email →
+        </ShimmerButton>
       </div>
     </div>
   );
 }
-
-

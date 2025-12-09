@@ -1,12 +1,14 @@
-import BackgroundEffects from "@/components/BackgroundEffects";
-import Navbar from "@/components/Navbar";
-import PortalShell from "@/components/PortalShell";
+import NavbarMinimal from "@/components/NavbarMinimal";
+import ScrollBackgroundSwitcher from "@/components/ScrollBackgroundSwitcher";
+import ScrollIndicator from "@/components/ScrollIndicator";
+import NeonCursor from "@/components/NeonCursor";
+import { siteConfig } from "@/config/site";
 import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Your Name – Portfolio",
-  description: "Dark neon portfolio built with Next.js and Tailwind CSS.",
+  title: `${siteConfig.name} – Portfolio`,
+  description: `${siteConfig.role} portfolio.`,
 };
 
 export default function RootLayout({
@@ -15,15 +17,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="min-h-screen bg-[#020617] text-slate-100 antialiased">
-        <PortalShell>
-          <BackgroundEffects />
-          <Navbar />
-          <main className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            {children}
-          </main>
-        </PortalShell>
+    <html lang="en" className="scroll-smooth">
+      <body className="min-h-screen bg-[#020617] text-slate-100 antialiased overflow-x-hidden">
+        {/* Liquid Ether background */}
+        <ScrollBackgroundSwitcher />
+        
+        <NeonCursor />
+        <ScrollIndicator />
+        <NavbarMinimal />
+        <main className="relative z-10 w-full">
+          {children}
+        </main>
       </body>
     </html>
   );
