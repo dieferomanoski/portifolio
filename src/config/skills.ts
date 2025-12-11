@@ -21,6 +21,7 @@ export const skillsData: SkillCategory[] = [
       { name: "SQL", icon: "SiPostgresql", category: "Languages" },
       { name: "NoSQL", icon: "SiMongodb", category: "Languages" },
       { name: "Solidity", icon: "SiSolidity", category: "Languages" },
+      { name: "Python", icon: "SiPython", category: "Languages" },
     ],
   },
   {

@@ -9,9 +9,7 @@ export default function ProjectsCollapsible() {
 
   const toggleProject = (index: number) => {
     setExpandedProjects((prev) =>
-      prev.includes(index)
-        ? prev.filter((i) => i !== index)
-        : [...prev, index]
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index],
     );
   };
 
@@ -47,7 +45,7 @@ export default function ProjectsCollapsible() {
               >
                 {/* Glow effect */}
                 <div className="absolute -inset-[1px] bg-gradient-to-r from-slate-700/0 via-slate-600/50 to-slate-700/0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
-                
+
                 <div className="relative border border-slate-800/50 rounded-2xl bg-slate-950/80 backdrop-blur-sm overflow-hidden">
                   {/* Header - Always visible */}
                   <button
@@ -69,10 +67,15 @@ export default function ProjectsCollapsible() {
                               Live
                             </span>
                           )}
-                          {project.codeUrl && (
+                          {project.codeUrl ? (
                             <span className="flex items-center gap-1 text-xs text-slate-400">
                               <FiGithub className="w-3 h-3" />
                               Open Source
+                            </span>
+                          ) : (
+                            <span className="flex items-center gap-1 text-xs text-slate-400">
+                              <FiGithub className="w-3 h-3" />
+                              In progress
                             </span>
                           )}
                         </div>

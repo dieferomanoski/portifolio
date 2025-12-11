@@ -20,21 +20,25 @@ export default function HypnoticOrb() {
     const centerY = canvas.height / 2;
 
     const particles: Array<{
-      angle: number;
-      radius: number;
-      speed: number;
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
       size: number;
       hue: number;
+      opacity: number;
     }> = [];
 
-    // Create orbital particles
-    for (let i = 0; i < 80; i++) {
+    // Create flowing particles like liquid ether background
+    for (let i = 0; i < 25; i++) {
       particles.push({
-        angle: (Math.PI * 2 * i) / 80,
-        radius: 60 + Math.random() * 80,
-        speed: 0.002 + Math.random() * 0.003,
-        size: Math.random() * 3 + 1,
-        hue: Math.random() * 60 + 180,
+        x: centerX + (Math.random() - 0.5) * 300,
+        y: centerY + (Math.random() - 0.5) * 300,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        size: Math.random() * 2 + 1,
+        hue: Math.random() * 40 + 180, // Blue to cyan range
+        opacity: Math.random() * 0.8 + 0.2,
       });
     }
 
@@ -45,108 +49,77 @@ export default function HypnoticOrb() {
 
       time += 0.01;
 
-      // Draw concentric rings with pulsing effect
-      for (let i = 0; i < 8; i++) {
-        const radius = 40 + i * 15;
-        const pulse = Math.sin(time * 2 - i * 0.3) * 5;
-        const alpha = 0.1 + Math.sin(time * 2 - i * 0.3) * 0.05;
-
-        // Outer glow
-        const gradient = ctx.createRadialGradient(
-          centerX, centerY, radius + pulse - 10,
-          centerX, centerY, radius + pulse + 10
-        );
-        gradient.addColorStop(0, `hsla(200, 80%, 60%, 0)`);
-        gradient.addColorStop(0.5, `hsla(200, 80%, 60%, ${alpha})`);
-        gradient.addColorStop(1, `hsla(280, 80%, 60%, 0)`);
-
-        ctx.strokeStyle = gradient;
-        ctx.lineWidth = 3;
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, radius + pulse, 0, Math.PI * 2);
-        ctx.stroke();
-
-        // Inner neon ring
-        ctx.strokeStyle = `hsla(${200 + i * 10}, 80%, 60%, ${alpha * 2})`;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, radius + pulse, 0, Math.PI * 2);
-        ctx.stroke();
-      }
-
-      // Update and draw orbital particles
+      // Update and draw flowing particles (like liquid ether)
       particles.forEach((p, index) => {
-        p.angle += p.speed;
-        const x = centerX + Math.cos(p.angle) * p.radius;
-        const y = centerY + Math.sin(p.angle) * p.radius;
+        // Update position
+        p.x += p.vx;
+        p.y += p.vy;
 
-        // Particle glow
-        const particleGradient = ctx.createRadialGradient(x, y, 0, x, y, p.size * 3);
-        particleGradient.addColorStop(0, `hsla(${p.hue}, 100%, 70%, 0.8)`);
-        particleGradient.addColorStop(0.5, `hsla(${p.hue}, 100%, 60%, 0.4)`);
-        particleGradient.addColorStop(1, `hsla(${p.hue}, 100%, 50%, 0)`);
+        // Bounce off boundaries
+        const boundRadius = 150;
+        const dx = p.x - centerX;
+        const dy = p.y - centerY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        
+        if (dist > boundRadius) {
+          p.vx *= -1;
+          p.vy *= -1;
+        }
 
-        ctx.fillStyle = particleGradient;
+        // Draw particle with subtle glow
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = `hsla(${p.hue}, 70%, 60%, ${p.opacity})`;
+        ctx.fillStyle = `hsla(${p.hue}, 70%, 60%, ${p.opacity})`;
         ctx.beginPath();
-        ctx.arc(x, y, p.size * 3, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fill();
+        ctx.shadowBlur = 0;
 
-        // Particle core
-        ctx.fillStyle = `hsla(${p.hue}, 100%, 80%, 1)`;
-        ctx.beginPath();
-        ctx.arc(x, y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Connect nearby particles
+        // Connect nearby particles with lines (like liquid ether)
         for (let j = index + 1; j < particles.length; j++) {
           const p2 = particles[j];
-          const x2 = centerX + Math.cos(p2.angle) * p2.radius;
-          const y2 = centerY + Math.sin(p2.angle) * p2.radius;
-          const dist = Math.sqrt((x2 - x) ** 2 + (y2 - y) ** 2);
+          const dx = p2.x - p.x;
+          const dy = p2.y - p.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 50) {
-            const alpha = (1 - dist / 50) * 0.3;
-            ctx.strokeStyle = `hsla(${(p.hue + p2.hue) / 2}, 100%, 60%, ${alpha})`;
+          if (distance < 80) {
+            ctx.strokeStyle = `hsla(${(p.hue + p2.hue) / 2}, 70%, 60%, ${
+              (1 - distance / 80) * 0.3
+            })`;
             ctx.lineWidth = 1;
             ctx.beginPath();
-            ctx.moveTo(x, y);
-            ctx.lineTo(x2, y2);
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
             ctx.stroke();
           }
         }
       });
 
-      // Central glowing core
-      const coreGradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 40);
-      const corePulse = Math.sin(time * 3) * 0.3 + 0.7;
-      coreGradient.addColorStop(0, `hsla(200, 100%, 70%, ${0.8 * corePulse})`);
-      coreGradient.addColorStop(0.4, `hsla(220, 100%, 60%, ${0.4 * corePulse})`);
-      coreGradient.addColorStop(0.7, `hsla(260, 100%, 50%, ${0.2 * corePulse})`);
-      coreGradient.addColorStop(1, `hsla(280, 100%, 40%, 0)`);
+      // Subtle central glow (much less prominent)
+      const coreGradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 60);
+      const corePulse = Math.sin(time * 2) * 0.2 + 0.3;
+      coreGradient.addColorStop(0, `hsla(200, 70%, 60%, ${0.2 * corePulse})`);
+      coreGradient.addColorStop(0.5, `hsla(220, 70%, 50%, ${0.1 * corePulse})`);
+      coreGradient.addColorStop(1, `hsla(220, 70%, 40%, 0)`);
 
       ctx.fillStyle = coreGradient;
       ctx.beginPath();
-      ctx.arc(centerX, centerY, 40, 0, Math.PI * 2);
+      ctx.arc(centerX, centerY, 60, 0, Math.PI * 2);
       ctx.fill();
 
-      // Rotating code symbols around core
-      const symbols = ["</>", "{}", "[]", "=>"];
+      // Floating code symbols (fewer and more subtle)
+      const symbols = ["</>", "{ }"];
       symbols.forEach((symbol, i) => {
-        const angle = time + (Math.PI * 2 * i) / symbols.length;
-        const x = centerX + Math.cos(angle) * 25;
-        const y = centerY + Math.sin(angle) * 25;
+        const angle = time * 0.3 + (Math.PI * i);
+        const radius = 40 + Math.sin(time + i) * 10;
+        const x = centerX + Math.cos(angle) * radius;
+        const y = centerY + Math.sin(angle) * radius;
 
-        ctx.save();
-        ctx.translate(x, y);
-        ctx.rotate(angle + Math.PI / 2);
-        ctx.font = "bold 14px monospace";
-        ctx.fillStyle = `hsla(200, 100%, 80%, ${corePulse})`;
+        ctx.font = "12px monospace";
+        ctx.fillStyle = `hsla(200, 70%, 70%, ${0.4 + Math.sin(time + i) * 0.2})`;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = `hsla(200, 100%, 70%, 0.8)`;
-        ctx.fillText(symbol, 0, 0);
-        ctx.restore();
+        ctx.fillText(symbol, x, y);
       });
 
       requestAnimationFrame(animate);
