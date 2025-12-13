@@ -80,7 +80,7 @@ export const skillsData: SkillCategory[] = [
     skills: [
       { name: "Docker", icon: "SiDocker", category: "DevOps" },
       { name: "Vercel", icon: "SiVercel", category: "DevOps" },
-      { name: "AWS", icon: "SiAmazonaws", category: "DevOps" },
+      { name: "AWS", icon: "FaAws", category: "DevOps" },
       { name: "CI/CD", icon: "FaCodeBranch", category: "DevOps" },
       { name: "Github Actions", icon: "SiGithubactions", category: "DevOps" },
       { name: "Linux", icon: "SiLinux", category: "DevOps" },
@@ -97,7 +97,6 @@ export const skillsData: SkillCategory[] = [
   {
     title: "Web3 & Blockchain",
     skills: [
-      { name: "Web3", icon: "SiWeb3dotjs", category: "Web3" },
       { name: "Ethereum", icon: "SiEthereum", category: "Web3" },
       { name: "Solidity", icon: "SiSolidity", category: "Web3" },
       { name: "ERC-20/721", icon: "SiEthereum", category: "Web3" },
