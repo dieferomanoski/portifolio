@@ -21,7 +21,7 @@ export const projects: Project[] = [
       "Blockchain",
       "Web3",
     ],
-    demoUrl: "token-craft-rust.vercel.app",
+    demoUrl: "https://token-craft-rust.vercel.app",
   },
   {
     title: "Neon Portfolio",
