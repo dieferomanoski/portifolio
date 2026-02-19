@@ -18,8 +18,6 @@ export const skillsData: SkillCategory[] = [
       { name: "JavaScript", icon: "SiJavascript", category: "Languages" },
       { name: "Dart", icon: "SiDart", category: "Languages" },
       { name: "Go", icon: "SiGo", category: "Languages" },
-      { name: "SQL", icon: "SiPostgresql", category: "Languages" },
-      { name: "NoSQL", icon: "SiMongodb", category: "Languages" },
       { name: "Solidity", icon: "SiSolidity", category: "Languages" },
       { name: "Python", icon: "SiPython", category: "Languages" },
     ],
@@ -54,6 +52,8 @@ export const skillsData: SkillCategory[] = [
       { name: "RabbitMQ", icon: "SiRabbitmq", category: "Backend" },
       { name: "Redis", icon: "SiRedis", category: "Backend" },
       { name: "BullMQ", icon: "SiRedis", category: "Backend" },
+      { name: "SQL", icon: "SiPostgresql", category: "Backend" },
+      { name: "NoSQL", icon: "SiMongodb", category: "Backend" },
     ],
   },
   {
@@ -67,6 +67,7 @@ export const skillsData: SkillCategory[] = [
       { name: "Event-Driven", icon: "FaBolt", category: "Architecture" },
       { name: "Monorepos", icon: "SiTurborepo", category: "Architecture" },
       { name: "MVC/MVVM", icon: "FaCubes", category: "Architecture" },
+      { name: "Modular", icon: "FaFolderTree", category: "Architecture" },
       { name: "TDD", icon: "FaCheckCircle", category: "Architecture" },
       {
         name: "Design Patterns",
@@ -91,6 +92,7 @@ export const skillsData: SkillCategory[] = [
     skills: [
       { name: "Keycloak", icon: "FaKey", category: "Security" },
       { name: "Auth & OAuth", icon: "FaShieldAlt", category: "Security" },
+      { name: "JWT", icon: "MdOutlineSecurity", category: "Security" },
       { name: "Secure-by-design", icon: "FaLock", category: "Security" },
     ],
   },
