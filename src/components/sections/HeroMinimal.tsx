@@ -62,7 +62,7 @@ export default function HeroMinimal() {
                     className="inline-flex items-center gap-2 rounded-lg border border-slate-800/60 bg-slate-950/60 px-3 py-2 font-medium uppercase tracking-[0.2em] text-slate-400 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
                   />
                   <FadeInText
-                    text="◎ Web3 Developer"
+                    text="◎ Web3 Developer Enthusiast"
                     delay={1000}
                     className="inline-flex items-center gap-2 rounded-lg border border-slate-800/60 bg-slate-950/60 px-3 py-2 font-medium uppercase tracking-[0.2em] text-slate-400 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
                   />
